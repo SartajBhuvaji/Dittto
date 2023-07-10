@@ -1,6 +1,7 @@
+#for testing purposes
 from tensorflow import keras
 
-def autoencoder(input_shape, **kwargs):
+def generate_autoencoder(input_shape, **kwargs):
     '''
     Constructs an autoencoder model using the given input shape and optional parameters.
 
@@ -16,11 +17,15 @@ def autoencoder(input_shape, **kwargs):
         tuple: A tuple containing the autoencoder, encoder, and decoder models.
     '''
     # Default parameter values
+    input_shape = int(input_shape)
+    if input_shape < 0:
+        raise ValueError("Input shape must be greater than 0.")
+    
     encoder_dense_layers = kwargs.get('encoder_dense_layers', [])
     bottle_neck = kwargs.get('bottle_neck', input_shape // 2)
     decoder_dense_layers = kwargs.get('decoder_dense_layers', [])
     decoder_activation = kwargs.get('decoder_activation', 'sigmoid')    
-    input_shape = input_shape
+    
     
     # Encoder Model
     encoder_input = keras.Input(shape=(input_shape,), name="encoder")
