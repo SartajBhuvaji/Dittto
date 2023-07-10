@@ -1,4 +1,4 @@
 # dittto
-![Tests](https://img.shields.io/github/workflow/status/SartajBhuvaji/dittto/Python%20application)
+![Tests](https://github.com/SartajBhuvaji/dittto/blob/main/.github/workflows/python-app.yml/badge.svg)
 
 PyPI for generating synthetic Tabular Data
