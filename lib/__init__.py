@@ -1,1 +1,1 @@
-from autoencoder import autoencoder
+from .autoencoder import generate_autoencoder
