@@ -1,3 +1,4 @@
+#for testing purposes
 from tensorflow import keras
 
 def generate_autoencoder(input_shape, **kwargs):
