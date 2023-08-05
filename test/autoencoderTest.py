@@ -100,13 +100,45 @@ class TestAutoencoder(unittest.TestCase):
         opt = keras.optimizers.Adam(learning_rate=0.001)
         autoencoder.compile(opt, loss="mse")
 
-    # def test_autoencoder_synthetic_data_genedator(self):
-    #     test_df = pd.read_csv('test_dataset.csv')
-    #     synthetic_df = generate_synthetic_data('single_encoder', test_df, 
-    #                             minority_class_column='class', minority_class_label='0',
-    #                             decoder_activation='sigmoid')
+    def test_autoencoder_synthetic_data_genedator(self):
+        test_df = pd.DataFrame({'a': [1,2,3,4,5,6,7,8,9,10], 'b': [1,2,3,4,5,6,7,8,9,10], 'class': [0,1,0,1,1,0,1,1,1,0]})
+        # test_df = pd.read_csv('test_dataset.csv')
         
-    #     self.assertEqual(type(synthetic_df).__name__, 'DataFrame')
+        synthetic_df = generate_synthetic_data('single_encoder', test_df, 
+                                minority_class_column='class', minority_class_label='0',
+                                decoder_activation='sigmoid')
+        
+        self.assertEqual(type(synthetic_df).__name__, 'DataFrame')
+
+
+    def test_autoencoder_synthetic_data_generator_no_minority(self):
+        test_df = pd.DataFrame({'a': [1,2,3,4,5,6,7,8,9,10], 'b': [1,2,3,4,5,6,7,8,9,10], 'class': [1,1,1,1,1,1,1,1,1,1]})
+        with self.assertRaises(ValueError):
+            generate_synthetic_data('single_encoder', test_df,
+                                    minority_class_column='class', minority_class_label='0',
+                                    decoder_activation='sigmoid')
+    
+    def test_autoencoder_synthetic_data_generator_empty_df(self):
+        test_df = pd.DataFrame()
+        with self.assertRaises(ValueError):
+            generate_synthetic_data('single_encoder', test_df,
+                                    minority_class_column='class', minority_class_label='0',
+                                    decoder_activation='sigmoid')
+            
+    def test_autoencoder_synthetic_data_generator_negative_epochs(self):
+        test_df = pd.DataFrame({'a': [1,2,3,4,5,6,7,8,9,10], 'b': [1,2,3,4,5,6,7,8,9,10], 'class': [0,1,0,1,1,0,1,1,1,0]})
+        with self.assertRaises(ValueError):
+            generate_synthetic_data('single_encoder', test_df,
+                                    minority_class_column='class', minority_class_label='0',
+                                    decoder_activation='sigmoid', epochs=-1)
+            
+    def test_autoencoder_synthetic_data_generator_incorrect_model_name(self):
+        test_df = pd.DataFrame({'a': [1,2,3,4,5,6,7,8,9,10], 'b': [1,2,3,4,5,6,7,8,9,10], 'class': [0,1,0,1,1,0,1,1,1,0]})
+        with self.assertRaises(ValueError):
+            generate_synthetic_data('single_encoder_', test_df,
+                                    minority_class_column='class', minority_class_label='0',
+                                    decoder_activation='sigmoid')        
+
 
 if __name__ == '__main__':
     unittest.main()

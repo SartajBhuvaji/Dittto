@@ -5,9 +5,18 @@ from tensorflow import keras
 def generate_synthetic_data(model_name: str, original_df, minority_class_column: str = 'class', 
                             minority_class_label: str = '0', decoder_activation: str = 'sigmoid', epochs: int = 100):
 
-
+    if original_df.empty:
+        raise ValueError("Empty dataframe.")
+    
+    if epochs < 1:
+        raise ValueError("Invalid number of epochs.")
+    
     original_df[minority_class_column] = original_df[minority_class_column].astype(str)  
     minority_df = original_df[original_df[minority_class_column] == minority_class_label]
+
+    if minority_df.empty:
+        raise ValueError("Minority class label not found in the dataset.")
+    
     majority_df = original_df[original_df[minority_class_column] != minority_class_label]
 
     minority_df = minority_df.drop(columns=[minority_class_column])
@@ -31,10 +40,13 @@ def generate_synthetic_data(model_name: str, original_df, minority_class_column:
     else:
         raise ValueError("Invalid model name.") 
     
-    autoencoder, encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers,
-                                                          bottle_neck=bottle_neck, 
-                                                          decoder_dense_layers=decoder_dense_layers,
-                                                          decoder_activation=decoder_activation)
+    try:
+        autoencoder, encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers,
+                                                            bottle_neck=bottle_neck, 
+                                                            decoder_dense_layers=decoder_dense_layers,
+                                                            decoder_activation=decoder_activation)
+    except ValueError:
+        raise ValueError("Invalid model parameters.")
     
     opt = keras.optimizers.Adam(learning_rate=0.001)
     autoencoder.compile(optimizer=opt, loss='mse')
@@ -47,7 +59,10 @@ def generate_synthetic_data(model_name: str, original_df, minority_class_column:
     reshaped_data = synthetic_minority_df.reshape(len(minority_df), -1)
     df_generated = pd.DataFrame(reshaped_data, columns = minority_df.columns)
 
-    df_generated[minority_class_column] = minority_class_label
+    if minority_class_label.isnumeric():
+        df_generated[minority_class_column] = int(minority_class_label)
+    else:
+        df_generated[minority_class_column] = minority_class_label
 
     synthetic_df = pd.concat([minority_df, df_generated, majority_df], ignore_index=True)
     synthetic_df = synthetic_df.sample(frac=1).reset_index(drop=True)
