@@ -7,9 +7,9 @@ class TestAutoencoder(unittest.TestCase):
     def test_autoencoder_model_type(self):
         input_shape = 10
         autoencoder, encoder, decoder = generate_autoencoder(input_shape)
-        self.assertEqual(type(autoencoder).__name__, 'Model')
-        self.assertEqual(type(encoder).__name__, 'Model')
-        self.assertEqual(type(decoder).__name__, 'Model')
+        self.assertEqual(type(autoencoder).__name__, 'Functional')
+        self.assertEqual(type(encoder).__name__, 'Functional')
+        self.assertEqual(type(decoder).__name__, 'Functional')
 
     def test_default_autoencoder(self):
         input_shape = 10
