@@ -1,7 +1,8 @@
-
 import unittest
-from autoencoder_copy import generate_autoencoder
+from autoencoder import generate_autoencoder
+from autoencoder_synthetic_data_generator import generate_synthetic_data   
 from tensorflow import keras
+import pandas as pd
 
 class TestAutoencoder(unittest.TestCase):
 
@@ -98,6 +99,14 @@ class TestAutoencoder(unittest.TestCase):
         
         opt = keras.optimizers.Adam(learning_rate=0.001)
         autoencoder.compile(opt, loss="mse")
+
+    # def test_autoencoder_synthetic_data_genedator(self):
+    #     test_df = pd.read_csv('test_dataset.csv')
+    #     synthetic_df = generate_synthetic_data('single_encoder', test_df, 
+    #                             minority_class_column='class', minority_class_label='0',
+    #                             decoder_activation='sigmoid')
+        
+    #     self.assertEqual(type(synthetic_df).__name__, 'DataFrame')
 
 if __name__ == '__main__':
     unittest.main()
