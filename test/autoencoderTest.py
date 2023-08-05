@@ -1,6 +1,7 @@
 
 import unittest
 from autoencoder_copy import generate_autoencoder
+from tensorflow import keras
 
 class TestAutoencoder(unittest.TestCase):
 
@@ -45,14 +46,14 @@ class TestAutoencoder(unittest.TestCase):
     def test_custom_activation(self):
         input_shape = 100
         decoder_activation = 'tanh'
-        autoencoder, encoder, decoder = generate_autoencoder(input_shape, decoder_activation=decoder_activation)
+        _ , _ , decoder = generate_autoencoder(input_shape, decoder_activation=decoder_activation)
         
         self.assertEqual(decoder_activation, decoder.layers[-1].activation.__name__)
 
     def test_large_input_shape(self):
         input_shape = 1000
         bottle_neck = 256
-        autoencoder, encoder, decoder = generate_autoencoder(input_shape, bottle_neck=bottle_neck)
+        _ , encoder, decoder = generate_autoencoder(input_shape, bottle_neck=bottle_neck)
         
         self.assertEqual(encoder.output_shape, (None, bottle_neck))
         self.assertEqual(decoder.input_shape, (None, bottle_neck))
@@ -61,7 +62,7 @@ class TestAutoencoder(unittest.TestCase):
         input_shape = 100
         encoder_dense_layers = [64, 32, 16]
         decoder_dense_layers = [16, 32, 64]
-        autoencoder, encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
+        _ , encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
                                                             decoder_dense_layers=decoder_dense_layers)
 
         self.assertEqual(len(encoder_dense_layers), len(encoder.layers) - 3)  
@@ -71,7 +72,7 @@ class TestAutoencoder(unittest.TestCase):
         input_shape = 100
         encoder_dense_layers = [64, 32, 16, 8]
         decoder_dense_layers = [16]
-        autoencoder, encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
+        _ , encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
                                                             decoder_dense_layers=decoder_dense_layers)
 
         self.assertEqual(len(encoder_dense_layers), len(encoder.layers) - 3)  
@@ -81,11 +82,22 @@ class TestAutoencoder(unittest.TestCase):
         input_shape = 256
         encoder_dense_layers = [64]
         decoder_dense_layers = [16,32,64,128]
-        autoencoder, encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
+        _ , encoder, decoder = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
                                                             decoder_dense_layers=decoder_dense_layers)
 
         self.assertEqual(len(encoder_dense_layers), len(encoder.layers) - 3)  
-        self.assertEqual(len(decoder_dense_layers), len(decoder.layers) - 2)     
+        self.assertEqual(len(decoder_dense_layers), len(decoder.layers) - 2)    
+
+    def test_autoencoder_compile(self):
+        input_shape = 128
+        encoder_dense_layers = [64, 32, 16, 8]
+        decoder_dense_layers = [16, 32, 64, 128]
+        bottle_neck = 32
+        autoencoder, _ , _ = generate_autoencoder(input_shape, encoder_dense_layers=encoder_dense_layers, 
+                                                            bottle_neck=bottle_neck, decoder_dense_layers=decoder_dense_layers)
+        
+        opt = keras.optimizers.Adam(learning_rate=0.001)
+        autoencoder.compile(opt, loss="mse")
 
 if __name__ == '__main__':
     unittest.main()
