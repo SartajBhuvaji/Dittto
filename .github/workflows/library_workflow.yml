@@ -34,7 +34,7 @@ jobs:
         cd lib
         python autoencoder.py
         
-    - name: run test
+    - name: Run autoencoderTest.py 
       run: |
         cd test
         python autoencoderTest.py
