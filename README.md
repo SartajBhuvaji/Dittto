@@ -1,5 +1,5 @@
 # pip package build
-![Tests](https://img.shields.io/github/actions/workflow/status/SartajBhuvaji/dittto/.github/workflows/python-app.yml?branch=main)
+[![Library Test](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml/badge.svg)](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml)
 
 PyPI for generating synthetic Tabular Data
 
