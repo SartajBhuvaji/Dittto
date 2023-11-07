@@ -1,10 +1,11 @@
+LICENSE
 README.md
 setup.py
+dittto/__init__.py
+dittto/autoencoder.py
 dittto.egg-info/PKG-INFO
 dittto.egg-info/SOURCES.txt
 dittto.egg-info/dependency_links.txt
 dittto.egg-info/requires.txt
 dittto.egg-info/top_level.txt
-lib/__init__.py
-lib/autoencoder.py
-test/test.py
+test/testing.py
