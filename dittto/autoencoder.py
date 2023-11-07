@@ -106,9 +106,9 @@ def generate_synthetic_data(model_name: str, original_df: pd.DataFrame, minority
         synthetic_df.to_csv('synthetic_data.csv', index=False)
 
     Example:
-        a. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data('single_encoder', original_df, minority_class_column='class', minority_class_label='0', decoder_activation='sigmoid', epochs=100)
-        b. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data('balanced', original_df, minority_class_column='class', minority_class_label='disease', decoder_activation='sigmoid', epochs=100)
-        c. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data('heavy_decoder', original_df, minority_class_column='class', minority_class_label='0', decoder_activation='softmax', epochs=100)
+        a. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data(model_name='single_encoder', original_df, minority_class_column='class', minority_class_label='0', decoder_activation='sigmoid', epochs=100)
+        b. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data(model_name='balanced', original_df, minority_class_column='class', minority_class_label='disease', decoder_activation='sigmoid', epochs=100)
+        c. synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data(model_name='heavy_decoder', original_df, minority_class_column='class', minority_class_label='0', decoder_activation='softmax', epochs=100)
                     
     """
   
