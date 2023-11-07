@@ -1,8 +1,8 @@
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/SartajBhuvaji/Data-Science-Project/tree/main/">
-    <img src="https://github.com/SartajBhuvaji/Brain-Tumor-Classification-Using-Deep-Learning-Algorithms/blob/master/ReadMe_files/MRI-animinated.gif" alt="logo" width="125" height="125">
-  </a> -->
+  <a href="https://github.com/SartajBhuvaji/pip-package-build">
+    <img src="https://archives.bulbagarden.net/media/upload/2/25/0132Ditto.png" alt="logo" width="125" height="125">
+  </a>
 
 <h3 align="center">Dittto</h3>
 
