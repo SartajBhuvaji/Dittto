@@ -34,7 +34,7 @@ jobs:
         
     - name: Compile autoencoder.py file
       run: |
-        cd lib
+        cd ditto
         python autoencoder.py
         
     - name: Run autoencoderTest.py 
