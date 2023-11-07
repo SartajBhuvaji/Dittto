@@ -45,29 +45,24 @@ def generate_model(input_shape:int, **kwargs):
     except Exception as e:
         raise Exception(e)    
     
-        # Encoder Model
     encoder_input = keras.Input(shape=(input_shape,), name="encoder")
     x = keras.layers.Flatten()(encoder_input)
 
-    # Encoder Dense Layers
     for units in encoder_dense_layers:
         x = keras.layers.Dense(units, activation="relu")(x)
 
     encoder_output = keras.layers.Dense(bottle_neck, activation="relu")(x)
     encoder = keras.Model(encoder_input, encoder_output, name="encoder")
 
-    # Decoder Model
     decoder_input = keras.Input(shape=(bottle_neck,), name="decoder")
     x = decoder_input
 
-    # Decoder Dense Layers
     for units in decoder_dense_layers:
         x = keras.layers.Dense(units, activation="relu")(x)
 
     decoder_output = keras.layers.Dense(input_shape, activation=decoder_activation)(x)
     decoder = keras.Model(decoder_input, decoder_output, name="decoder")
 
-    # Autoencoder Model
     autoencoder_input = keras.Input(shape=(input_shape,), name="input")
     encoded = encoder(autoencoder_input)
     decoded = decoder(encoded)
@@ -189,4 +184,4 @@ def generate_synthetic_data(model_name: str, original_df: pd.DataFrame, minority
     except Exception as e:
         raise Exception(e)
 
-    return synthetic_df, generated_data, minority_df, majority_df
+    return synthetic_df, generated_data[:len(majority_df)], minority_df, majority_df
