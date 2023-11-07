@@ -38,6 +38,7 @@
 - `pip install dittto`
 
  ``` 
+# Documentation 
 >> help(generate_model)
 >> help(generate_synthetic_data)
 ```
