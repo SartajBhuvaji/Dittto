@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.1.10'
+VERSION = '1.0.0'
 DESCRIPTION = 'Generate synthetic Tabular Data'
 LONG_DESCRIPTION = 'A package with multiple alogrithms to generate synthetic tabular data.'
 
