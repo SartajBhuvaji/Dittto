@@ -2,9 +2,11 @@ from setuptools import setup, find_packages
 
 VERSION = '1.0.0'
 DESCRIPTION = 'Generate synthetic Tabular Data'
-LONG_DESCRIPTION = 'A package with multiple alogrithms to generate synthetic tabular data.'
 
-# Setting up
+# Read the contents of your README.md file
+with open('README.md', 'r', encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
+
 setup(
     name="dittto",
     version=VERSION,
@@ -17,9 +19,9 @@ setup(
     install_requires=['pandas', 'numpy', 'tensorflow'],
     keywords=['python', 'synthetic data', 'synthetic data generation', 'tabular data', ' csv',],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",

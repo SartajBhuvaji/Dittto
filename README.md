@@ -21,6 +21,7 @@
 
 <div align = "left">
 
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
 [![Library Test](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml/badge.svg)](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml)
 
@@ -37,8 +38,15 @@
 ## Getting Stated
 - `pip install dittto`
 
- ``` 
+``` 
+from dittto import generate_model
+from dittto import generate_synthetic_data
+```
+
+ 
+ 
 # Documentation 
+```
 >> help(generate_model)
 >> help(generate_synthetic_data)
 ```
