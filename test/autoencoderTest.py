@@ -101,7 +101,6 @@ class TestAutoencoder(unittest.TestCase):
 
     def test_autoencoder_synthetic_data_genedator(self):
         test_df = pd.DataFrame({'a': [1,2,3,4,5,6,7,8,9,10], 'b': [1,2,3,4,5,6,7,8,9,10], 'class': [0,1,0,1,1,0,1,1,1,0]})
-        # test_df = pd.read_csv('test_dataset.csv')
         
         synthetic_df, generated_data, minority_df, majority_df = generate_synthetic_data('single_encoder', test_df, 
                                 minority_class_column='class', minority_class_label='0',
