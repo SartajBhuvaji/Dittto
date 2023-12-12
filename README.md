@@ -19,15 +19,14 @@
 </div>
 
 
-<div align = "left">
+<div style="display: flex; align-items: center; justify-content: space-around;">
 
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
+  [![Library Test](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml/badge.svg)](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml)
 
-[![Library Test](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml/badge.svg)](https://github.com/SartajBhuvaji/pip-package-build/actions/workflows/library_workflow.yml)
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/18kAMJR0VBtfC3swIkbuTPWd0Sb0mDVCo?usp=sharing)
 
+  [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
   
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/18kAMJR0VBtfC3swIkbuTPWd0Sb0mDVCo?usp=sharing)
-<br>
 </div>
 
 
