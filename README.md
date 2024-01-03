@@ -1,13 +1,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/SartajBhuvaji/pip-package-build">
-    <img src="https://archives.bulbagarden.net/media/upload/2/25/0132Ditto.png" alt="logo" width="125" height="125">
+    <img src="https://github.com/SartajBhuvaji/Dittto/blob/main/img/dittto.png" alt="logo" width="125" height="125">
   </a>
 
 <h3 align="center">Dittto</h3>
 
   <p align="center">
-    Seattle University : Data Science Research
+    Seattle University: Data Science Research
     <br />
     <a href="https://github.com/SartajBhuvaji">Sartaj Bhuvaji</a>
 
@@ -31,10 +31,10 @@
 
 
 ## About
-- Dittto is a py-pi package which can generate synthetic tabular data for minority class.
+- Dittto is a py-pi package that can generate synthetic tabular data for the minority class.
 - The current dittto version `v1.0.0` uses <i>Autoencoders</i> to generate synthetic data.
 
-## Getting Stated
+## Getting Started
 - `pip install dittto`
 
 ``` 
@@ -54,7 +54,7 @@ from dittto import generate_synthetic_data
 ### `generate_synthetic_data()`
 #### Description
 
-- The `generate_synthetic_data()` function is a ready to use minority data augmentation function. 
+- The `generate_synthetic_data()` function is a ready-to-use minority data augmentation function. 
 
 #### Parameters
 - model_name (str): Name of the autoencoder model to use. Options are 'single_encoder', 'balanced', and 'heavy_decoder'.
@@ -86,11 +86,11 @@ from dittto import generate_synthetic_data
 #### Parameters
 - input_shape (int): The shape of the input data.
 - **kwargs: Optional keyword arguments for configuring the model. Possible arguments include:
-- encoder_dense_layers (list): A list of integers representing the number of units in each dense layer of the encoder. Default is [18, 20].
-- bottle_neck (int): The number of units in the bottleneck layer. Default is half of the input shape.
-- decoder_dense_layers (list): A list of integers representing the number of units in each dense layer of the decoder. Default is [20, 18].
-- decoder_activation (str): The activation function to use in the decoder output layer. Default is 'sigmoid'.
-- summary (bool): Whether to print the summary of the models. Default is False.
+- encoder_dense_layers (list): A list of integers representing the number of units in each dense layer of the encoder. The default is [18, 20].
+- bottle_neck (int): The number of units in the bottleneck layer. The default is half of the input shape.
+- decoder_dense_layers (list): A list of integers representing the number of units in each dense layer of the decoder. The default is [20, 18].
+- decoder_activation (str): The activation function to use in the decoder output layer. The default is 'sigmoid'.
+- summary (bool): Whether to print the summary of the models. The default is False.
 
 #### Returns
 - tuple: A tuple containing the autoencoder, encoder, and decoder models.
